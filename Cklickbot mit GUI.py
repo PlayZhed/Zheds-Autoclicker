@@ -1,12 +1,6 @@
 import tkinter as tk 
 from pyautogui import click, position, PAUSE, FAILSAFE, FailSafeException
-#from pynput.mouse import Listener, Button
-#tk.IntVar
 
-'''def print_position():
-    while True:
-        print(position())'''
-#print_position()
 
 #Definitionsbereich für Callback-Funktionen
 def uebertragen():
@@ -30,7 +24,7 @@ frame['height'] = 1000
 frame.place(x = 200,y = 200)
 
 
-#Funktion Button Klicken (50) für Anzahl der Klicks, Funktion wird x Mal wiederholt
+#Funktion Button Klicken (25) für Anzahl der Klicks, Funktion wird x Mal wiederholt - hier noch Möglichekit hinzufügen, um Anzahl Klicks einzustellen
 def click_button():
     for i in range (25):
         click(lb_x_out["text"],lb_y_out["text"])
@@ -43,24 +37,6 @@ FAILSAFE = True
 def Ende():
     window.destroy()
 
-'''
-lb_clickzahl = tk.Label(window,text='Clickzahl:',fg='black')
-lb_clickzahl.grid(row = 1,column = 0,sticky = 'w')
-'''
-
-
-
-#Position des Mauszeigers anzeigen lassen
-
-
-
-#Koordinaten für Mauszeiger
-#x = -1513 
-#y = 168
-
-
-#rb_go = tk.Radiobutton(frame,text="Go",value="go"
-#rb_go.grid(row = 0,column = 0)
 
 #Überschrift Koordinaten
 lb_Eingabe = tk.Label(window,text='Koordinaten:',fg='darkblue')
