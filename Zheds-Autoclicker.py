@@ -11,7 +11,9 @@ stop_clicking = False
 
 pyautogui.PAUSE = 0
 
+
 def click_button_amount():
+    pyautogui.PAUSE = float(lb_pause["text"] or "0")
     global stop_clicking
     x = int(lb_x_out["text"])
     y = int(lb_y_out["text"])
@@ -33,6 +35,7 @@ def click_button_amount():
 
 
 def click_button_duration():
+    pyautogui.PAUSE = float(lb_pause["text"] or "0")
     global stop_clicking
     x = int(lb_x_out["text"])
     y = int(lb_y_out["text"])
@@ -64,7 +67,6 @@ def esc_listener():
     listener = pynput_keyboard.Listener(on_press=on_press)
     listener.start()
 
-PAUSE = 0.0000001
 FAILSAFE = True
 
 def Exit():
@@ -77,6 +79,7 @@ def transfer():
         lb_y_out["text"] = et_y.get() or "0"
         lb_amount_out["text"] = et_amount.get()
         lb_duration["text"] = et_duration.get()
+        lb_pause["text"] = et_pause.get() or "0.0"
     except ValueError:
         print("only numbers")
 
@@ -125,6 +128,9 @@ lb_Input_clicks.grid(row = 6,column = 1,sticky = 'we')
 lb_Input_duration = tk.Label(window,text='how many seconds:',fg='darkblue')
 lb_Input_duration.grid(row = 8,column = 1,sticky = 'we')
 
+lb_Input_Pause = tk.Label(window,text='pause:',fg='darkblue')
+lb_Input_Pause.grid(row = 10,column = 1,sticky = 'we')
+
 #entry fields
 et_x = tk.Entry(window)
 et_x.grid(row = 1,column = 1)
@@ -138,6 +144,9 @@ et_amount.grid(row = 7, column = 1)
 et_duration = tk.Entry(window)
 et_duration.grid(row = 9,column = 1)
 
+et_pause = tk.Entry(window)
+et_pause.grid(row = 11,column = 1)
+
 #transfered values
 lb_x_out = tk.Label(window,text="0",fg='darkblue')
 lb_x_out.grid(row = 1,column = 2,sticky = 'we')
@@ -145,11 +154,14 @@ lb_x_out.grid(row = 1,column = 2,sticky = 'we')
 lb_y_out = tk.Label(window,text="0",fg='darkblue')
 lb_y_out.grid(row = 2,column = 2,sticky = 'we')
 
-lb_amount_out = tk.Label(window,text="0",fg='black')
+lb_amount_out = tk.Label(window,text="0",fg='darkblue')
 lb_amount_out.grid(row = 7, column = 2,sticky = 'n')
 
 lb_duration = tk.Label(window,text="0",fg='darkblue')
 lb_duration.grid(row = 9,column = 2,sticky = 'n')
+
+lb_pause = tk.Label(window,text="0.0",fg='darkblue')
+lb_pause.grid(row = 11,column = 2,sticky = 'n')
 
 #buttons
 bt_start_amount = tk.Button(window,text='start clicking amount',width = 30,fg = 'black',command = click_button_amount)
